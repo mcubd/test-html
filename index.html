@@ -45,7 +45,7 @@ document.getElementById('in').value=''
 function get(){
 var xhttp = new XMLHttpRequest();
 
-xhttp.open("GET", 'https://nodebd.vercel.app', true);
+xhttp.open("GET", 'https://nodebd.vercel.app/get', true);
 
 xhttp.onload = function() {
     document.getElementById("h1").innerHTML = this.responseText;
