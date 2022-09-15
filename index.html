@@ -44,18 +44,18 @@ document.getElementById('in').value=''
 
 function get(){
 var xhttp = new XMLHttpRequest();
+var valu= document.getElementById('in').value
 
 xhttp.open("GET", 'https://nodebd.vercel.app/get', true);
+xhttp.setRequestHeader('reqs', valu)
 
 xhttp.onload = function() {
     const obj = JSON.parse(this.responseText);
-
     document.getElementById("h1").innerHTML = obj[0].name +'  '+obj[0].date;
   }
-
 xhttp.send();
-
 }
+
 
 </script>
 </body>
