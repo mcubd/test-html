@@ -21,85 +21,66 @@
 <script>
 var messages = document.getElementById('messages');
 
-// -----------------------post
-
-function send(){
-var valu= document.getElementById('in').value
-
-var xhttp = new XMLHttpRequest();
-xhttp.open("POST", 'https://zaynbd.herokuapp.com/', true);
-
-
-xhttp.setRequestHeader('reqs', valu)
-xhttp.setRequestHeader('ipp', valu)
-
-
-xhttp.send();
-document.getElementById('in').value=''
-
-}
-
 
 // ---------------get
 
 function get(){
 var xhttp = new XMLHttpRequest();
-
 xhttp.open("GET", 'https://zaynbd.herokuapp.com/', true);
-xhttp.setRequestHeader('srk', 2)
-
-xhttp.onload = function() {
+// xhttp.setRequestHeader('n', valu)
+xhttp.onload = function () {
     const obj = JSON.parse(this.responseText);
-    if(this.responseText==[]){alert('nai')}else{
-
-
-      document.getElementById("h1").innerHTML = obj[0].name +'  '+obj[0].date;
-    }}
-
-xhttp.send();
-document.getElementById('in').value=''
-}
-
-
-var addMessage = function (msg, d, con) {
-    var node = document.createElement('li')
-    // node.style.backgroundColor = "red"
-    node.textContent = msg;
-        messages.appendChild(node);
-      // if (con !== 'noo') { lkk() }
-    addtime(d)
-};
-
-
-function loadHis(){
-     var dae = document.getElementById("messages").children[1].innerText
-    socket.emit('loadhis', dae)
-
-}
-
-socket.on('his', (data, ttt) => {
-    addhis(data, ttt);
-})
-
-
-var addhis = function (msg, o) {
-    {
-      var onn=document.getElementById("messages")
-
+    if(this.responseText=='[]'){document.getElementById("h1").innerHTML ='nai'}else{
       var node = document.createElement('li')
-      node.textContent = msg;
-      var no = document.createElement('li')
+    node.textContent =obj[0].num+'----'+obj[0].date+'-----'+ obj[0].name+'-----'+obj[0].ipad 
+        messages.appendChild(node);
+        setTimeout(() => {his5()}, 1000);
+    }}
+xhttp.send();
+};get()
+
+
+
+
+// var addMessage = function (msg, d, con) {
+//     var node = document.createElement('li')
+//     // node.style.backgroundColor = "red"
+//     node.textContent = msg;
+//         messages.appendChild(node);
+//       // if (con !== 'noo') { lkk() }
+//     addtime(d)
+// };
+
+
+// function loadHis(){
+//      var dae = document.getElementById("messages").children[1].innerText
+//     socket.emit('loadhis', dae)
+
+// }
+
+// socket.on('his', (data, ttt) => {
+//     addhis(data, ttt);
+// })
+
+
+// var addhis = function (msg, o) {
+//     {
+//       var onn=document.getElementById("messages")
+
+//       var node = document.createElement('li')
+//       node.textContent = msg;
+//       var no = document.createElement('li')
       
-        // messages.appendChild(no);
-    }
+//         // messages.appendChild(no);
+//     }
 
-    if (msg !== "No more data") { no.textContent = o; }
-    // if (message === "No more data") { node.classList.add('last') }
+//     if (msg !== "No more data") { no.textContent = o; }
+//     // if (message === "No more data") { node.classList.add('last') }
 
-    var one = onn.firstElementChild;
-    onn.insertBefore(node, one)
-    onn.insertBefore(no, one)
-}
+//     var one = onn.firstElementChild;
+//     onn.insertBefore(node, one)
+//     onn.insertBefore(no, one)
+// }
 
 
 
