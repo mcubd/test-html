@@ -31,13 +31,14 @@ function send(){
 var valu= document.getElementById('in').value
 
 var xhttp = new XMLHttpRequest();
+xhttp.open("POST", 'https://zaynbd.herokuapp.com/', true);
 
-xhttp.open("POST", 'https://nodebd.vercel.app', true);
-// xhttp.open("POST", 'http://localhost:8000', true);
 
 xhttp.setRequestHeader('reqs', valu)
+xhttp.setRequestHeader('ipp', valu)
 
-xhttp.send(valu);
+
+xhttp.send();
 document.getElementById('in').value=''
 
 }
@@ -46,14 +47,17 @@ function get(){
 var xhttp = new XMLHttpRequest();
 var valu= document.getElementById('in').value
 
-xhttp.open("GET", 'https://nodebd.vercel.app/get', true);
-xhttp.setRequestHeader('reqs', valu)
+xhttp.open("GET", 'https://zaynbd.herokuapp.com/', true);
+xhttp.setRequestHeader('n', valu)
 
 xhttp.onload = function() {
+    console.log(this.responseText)
     const obj = JSON.parse(this.responseText);
-    document.getElementById("h1").innerHTML = obj[0].name +'  '+obj[0].date;
+    document.getElementById("h1").innerHTML = obj.name +'  '+obj.date;
   }
 xhttp.send();
+document.getElementById('in').value=''
+
 }
 
 
