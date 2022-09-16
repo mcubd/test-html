@@ -7,11 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Socket.IO dfe </title>
     <style>
-
+     h5{
+      display: inline-block;
+      font-size: 18px;
+     }
+    
     </style>
   </head>
   <body>
-    <button class="his"  onclick="loadHis()">History</button>
+    <button class="his" id="his"  onclick="loadHis()">History</button>
     <ul id="messages"></ul>
     <h1 id="h1"></h1>
 
@@ -33,15 +37,44 @@ xhttp.onload = function () {
     const obj = JSON.parse(this.responseText);
     if(this.responseText=='[]'){document.getElementById("h1").innerHTML ='nai'}else{
       var node = document.createElement('li')
-    node.textContent =obj[0].num+'----'+obj[0].date+'-----'+ obj[0].name+'-----'+obj[0].ipad 
+      var h5 = document.createElement('h5')
+      h5.textContent=obj[0].num
+      node.textContent =obj[0].date+'-----'+ obj[0].name+'-----'+obj[0].ipad 
+      node.appendChild(h5);
         messages.appendChild(node);
-        setTimeout(() => {his5()}, 1000);
+
+        // setTimeout(() => {his5()}, 1000);
     }}
 xhttp.send();
 };get()
 
 
+function loadHis(){
+  document.getElementById('his').disabled =true
+  var last =document.getElementById('messages')
+ if(last.firstChild.lastChild.innerHTML==1){alert('no more')}else{
 
+
+  var xhttp = new XMLHttpRequest();
+xhttp.open("GET", 'https://zaynbd.herokuapp.com/his', true);
+
+xhttp.setRequestHeader('n', last.firstChild.lastChild.innerHTML-2)
+xhttp.onload = function () {
+    const obj = JSON.parse(this.responseText);
+    if(this.responseText=='[]'){document.getElementById("h1").innerHTML ='nai'}else{
+      var node = document.createElement('li')
+      var h5 = document.createElement('h5')
+      h5.textContent=obj[0].num
+    node.textContent =obj[0].date+'-----'+ obj[0].name+'-----'+obj[0].ipad 
+    node.appendChild(h5);
+
+    last.insertBefore(node, last.firstChild)
+  document.getElementById('his').disabled =false
+
+    }}
+    xhttp.send();
+
+}}
 
 // var addMessage = function (msg, d, con) {
 //     var node = document.createElement('li')
