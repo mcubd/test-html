@@ -34,7 +34,7 @@ var messages = document.getElementById('messages');
 
 function get(){
 var xhttp = new XMLHttpRequest();
-xhttp.open("GET", 'https://zaynbd.herokuapp.com/', true);
+xhttp.open("GET", 'https://nodebd.vercel.app/', true);
 // xhttp.setRequestHeader('n', valu)
 xhttp.onload = function () {
     const obj = JSON.parse(this.responseText);
@@ -59,7 +59,7 @@ function loadHis(){
 
 
   var xhttp = new XMLHttpRequest();
-xhttp.open("GET", 'https://zaynbd.herokuapp.com/his', true);
+xhttp.open("GET", 'https://nodebd.vercel.app/his', true);
 
 xhttp.setRequestHeader('n', last.firstChild.lastChild.innerHTML-2)
 xhttp.onload = function () {
