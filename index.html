@@ -127,13 +127,15 @@ xhttp.onload = function () {
 
 }
 var inter= setInterval(() => {window.location.reload();}, 10000)
-inter()
+
 function go(){
 var inp=document.getElementById('input')
 var but=document.getElementById('but')
 
 if(inp.value==0){
 clearInterval(inter)
+inp.value=''
+
 }
 
 
