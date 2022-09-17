@@ -22,6 +22,9 @@
     <ul id="messages"></ul>
     <h1 id="h1"></h1>
 
+    <input id="input" type="text">
+    <button id="but" onclick="go()" >go</button>
+
 
 
 
@@ -123,12 +126,18 @@ xhttp.onload = function () {
 }else if(h11.innerHTML=''){}else{alert('what!!!')}
 
 }
-function a(){
+var inter= function (){setInterval(() => {window.location.reload();}, 10000)}
+inter()
+function go(){
+var inp=document.getElementById('input')
+var but=document.getElementById('but')
 
-  setInterval(() => {window.location.reload();}, 10000);
+if(inp.value==0){
+clearInterval(inter)
+}
+
 
 }
-a()
 
 // var addMessage = function (msg, d, con) {
 //     var node = document.createElement('li')
