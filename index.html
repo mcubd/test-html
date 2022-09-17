@@ -79,6 +79,54 @@ xhttp.onload = function () {
 
 }}
 
+
+function neww(){
+  var las =document.getElementById('messages')
+  var h11 =document.getElementById('h1')
+if(h11.innerHTML='nai'){
+
+  var xhttp = new XMLHttpRequest();
+xhttp.open("GET", 'https://nodebd.vercel.app/his', true);
+
+xhttp.onload = function () {
+    const obj = JSON.parse(this.responseText);
+    if(this.responseText=='[]'){}else{
+      var node = document.createElement('li')
+      var h5 = document.createElement('h5')
+      h5.textContent=obj[0].num
+    node.textContent =obj[0].date+'-----'+ obj[0].name+'-----'+obj[0].ipad 
+    node.appendChild(h5);
+    las.append(node);
+    }}
+
+    xhttp.send();
+}else if(document.getElementById('messages').lastChild){
+
+  var mesg=document.getElementById('messages')
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", 'https://nodebd.vercel.app/his', true);
+  xhttp.setRequestHeader('n', mesg.lastChild.lastChild.innerHTML)
+
+  xhttp.onload = function () {
+    const obj = JSON.parse(this.responseText);
+    if(this.responseText=='[]'){}else{
+      var node = document.createElement('li')
+      var h5 = document.createElement('h5')
+      h5.textContent=obj[0].num
+    node.textContent =obj[0].date+'-----'+ obj[0].name+'-----'+obj[0].ipad 
+    node.appendChild(h5);
+    las.append(node);
+    }}
+
+    xhttp.send();
+
+}else if(h11.innerHTML=''){}else{alert('what!!!')}
+
+}
+
+setInterval(() => {neww()}, 20000);
+
+
 // var addMessage = function (msg, d, con) {
 //     var node = document.createElement('li')
 //     // node.style.backgroundColor = "red"
