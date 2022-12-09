@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Socket.IO dfe </title>
+    <title>Zaynbd </title>
     <style>
      h5{
       display: inline-block;
@@ -32,8 +32,8 @@
     <ul id="messages"></ul>
     <h1 id="h1"></h1>
 
-    <input id="input" type="text">
-    <button id="but" onclick="go()" >go</button>
+    <!-- <input id="input" type="text"> -->
+    <button id="but" onclick="go()" >stop reloading</button>
 
 
 
@@ -139,14 +139,14 @@ xhttp.onload = function () {
 var inter= setInterval(() => {window.location.reload();}, 10000)
 
 function go(){
-var inp=document.getElementById('input')
+// var inp=document.getElementById('input')
 var but=document.getElementById('but')
 
-if(inp.value==0){
-clearInterval(inter)
-inp.value=''
+// if(inp.value==''){
+// inp.value=''
 
-}
+// }
+clearInterval(inter)
 
 
 }
